@@ -19,7 +19,7 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-molecules/swift-symmetry.git",
+            url: "https://github.com/swift-atoms/swift-symmetry.git",
             branch: "main"
         ),
         .package(
@@ -28,10 +28,6 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/swift-molecules/swift-symmetry-dimension.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-molecules/swift-affine-geometry.git",
             branch: "main"
         ),
         .package(
@@ -46,6 +42,10 @@ let package = Package(
             url: "https://github.com/swift-atoms/swift-numeric.git",
             branch: "main"
         ),
+        .package(
+            url: "https://github.com/swift-atoms/swift-linear.git",
+            branch: "main"
+        ),
     ],
     targets: [
         .target(
@@ -53,10 +53,8 @@ let package = Package(
             dependencies: [
                 .product(name: "Symmetry", package: "swift-symmetry"),
                 .product(name: "Symmetry Linear", package: "swift-symmetry-linear"),
-                .product(
-                    name: "Affine Geometry",
-                    package: "swift-affine-geometry"
-                ),
+                .product(name: "Affine", package: "swift-affine"),
+                .product(name: "Dimension", package: "swift-dimension"),
             ]
         ),
         .testTarget(
@@ -70,7 +68,12 @@ let package = Package(
                 ),
                 .product(name: "Affine", package: "swift-affine"),
                 .product(name: "Dimension", package: "swift-dimension"),
-                .product(name: "Real", package: "swift-numeric"),
+                .product(name: "Linear", package: "swift-linear"),
+                .product(name: "Numeric", package: "swift-numeric"),
+                .product(
+                    name: "Numeric Standard Library Integration",
+                    package: "swift-numeric"
+                ),
             ]
         ),
     ],

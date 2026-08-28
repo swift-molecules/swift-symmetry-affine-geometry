@@ -1,4 +1,5 @@
-public import Affine_Geometry
+public import Affine
+public import Dimension
 public import Symmetry
 public import Symmetry_Linear
 

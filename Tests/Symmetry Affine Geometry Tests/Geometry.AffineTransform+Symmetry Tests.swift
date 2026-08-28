@@ -1,13 +1,12 @@
-import Affine_Geometry
 import Affine
 import Dimension
-import Real
-import Testing
-
+import Linear
+import Numeric
+import Numeric_Standard_Library_Integration
 import Symmetry
+import Symmetry_Affine_Geometry
 import Symmetry_Dimension
-
-@testable import Symmetry_Affine_Geometry
+import Testing
 
 @Suite
 struct `Geometry.AffineTransform+Symmetry Tests` {
@@ -82,7 +81,7 @@ struct `Geometry.AffineTransform+Symmetry Tests` {
 
     @Test
     func `Initialize from uniform scale`() {
-        let scale = Scale<2, Double>.uniform(2.5)
+        let scale = Scale<2, Double>.uniform(Scale<1, Double>(2.5))
         let transform = Affine.Continuous<Double, Void>.Transform(scale)
 
         #expect(transform.linear.a == 2.5)
@@ -140,7 +139,7 @@ struct `Geometry.AffineTransform+Symmetry Tests` {
 
     @Test
     func `Initialize from horizontal shear`() {
-        let shear = Shear<2, Double>.horizontal(0.7)
+        let shear = Shear<2, Double>.horizontal(Scale<1, Double>(0.7))
         let transform = Affine.Continuous<Double, Void>.Transform(shear)
 
         #expect(transform.linear.a == 1)
@@ -151,7 +150,7 @@ struct `Geometry.AffineTransform+Symmetry Tests` {
 
     @Test
     func `Initialize from vertical shear`() {
-        let shear = Shear<2, Double>.vertical(0.4)
+        let shear = Shear<2, Double>.vertical(Scale<1, Double>(0.4))
         let transform = Affine.Continuous<Double, Void>.Transform(shear)
 
         #expect(transform.linear.a == 1)
